@@ -19,9 +19,8 @@ window.onload = () => {
   myImage.onload = () => {
     ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
     let particles = [];
-    let numberOfParticles = 20000;
+    let numberOfParticles = 25000;
 
     let mappedImage = [];
     for (let y = 0; y < canvas.height; y++) {
@@ -33,12 +32,13 @@ window.onload = () => {
         const brightness = calculateRelativeBrightness(red, green, blue);
         const cell = {
           cellBrightness: brightness,
-
+          color: `rgb(${red}, ${green}, ${blue})`,
         };
         row.push(cell);
       }
       mappedImage.push(row);
     }
+    console.log(mappedImage);
 
     function calculateRelativeBrightness(red, green, blue) {
       return Math.sqrt(

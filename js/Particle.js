@@ -27,7 +27,7 @@ export default class Particle {
 
     draw(ctx) {
       ctx.beginPath();
-      ctx.fillStyle = 'white';
+      ctx.fillStyle = this.mappedImage[this.position1][this.position2].color;
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
     }
